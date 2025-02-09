@@ -21,14 +21,6 @@ void heartBeat() {
     }
 }
 
-void paBebe(){
-    cout << "Hai bebii, ano kamusta ka??" << endl;
-    cout << "ahhh okay lng.., sigii sigii," << endl;
-    cout << "ano kasi, malapit na valentines.." << endl;
-    cout << "gusto sana mag tanong.." << endl;
-    cout << "If you would want to be my Va" << endl;
-}
-
 void errorMsg(){
     cout << "SYSTEM ERROR!!!" << endl;
     cout << "Error509: Program Malfunction. (Try Rebooting)" << endl;
@@ -41,18 +33,8 @@ void errorMsg(){
     cout << "Restarting Program Execution" << endl;
 }
 
-void errQuestion(){
-    cout << "Hai bebii, ano kamusta ka??" << endl;
-    cout << "ahhh okay lng.., sigii sigii," << endl;
-    cout << "ano kasi, malapit na valentines.." << endl;
-    cout << "gusto sana mag tanong.." << endl;
-    cout << "If you would want to be my Va" << endl;
-}
-
-
 int main() {
-    string firstans; 
-
+    
     cout << "HAPPY VALENTINES REGINE!!! <3" << endl;
     cout << "Let me first say, I Love You Regine. With all my heart." << endl;
     cout << "I would walk to the ends of the world so that I could see your smile, the smile the brightens up my day." << endl; 
@@ -60,6 +42,5 @@ int main() {
     cout << "Your eyes, that has captivated me from time and time again." << endl;
     cout << "Your effortless Beauty that knows no end." << endl;
 
-    heartBeat();
     return 0;
 }
