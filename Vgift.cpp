@@ -24,7 +24,6 @@ int main() {
     }
 
     //DISPLAY DECOY MESSAGE
-
     //DISPLAY ERROR
 
     //USER FIXES CODE
