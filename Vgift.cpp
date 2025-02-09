@@ -8,7 +8,7 @@ void clearScreen() {
     system("cls");  // Windows
 }
 
-void heartBeatAnimation() {                     //Incomplete: FIX HEART ANIMATION
+void heartBeatAnimation() {   
     string heart[] = {
         "    ______     ______    ",
         "   |******|   |******|   ",
@@ -24,7 +24,7 @@ void heartBeatAnimation() {                     //Incomplete: FIX HEART ANIMATIO
     };
 
     string arrowFrames[] = {
-        "->       ", "  ->     ", "    ->   ", "      -> ", "        ->"
+        "->        ", "  ->      ", "    ->    ", "      ->  ", "        ->"
     };
 
     int arrowPos = 0;
@@ -43,6 +43,9 @@ void heartBeatAnimation() {                     //Incomplete: FIX HEART ANIMATIO
         this_thread::sleep_for(chrono::milliseconds(300));  // Adjust speed
         arrowPos++;
     }
+
+    // Keep the heart displayed for 5 seconds before moving on
+    this_thread::sleep_for(chrono::seconds(5));
 }
 
 void displayText() {
@@ -63,6 +66,13 @@ void displayText() {
     }
 }
 
+void dQuestion() {
+    char finalQ;
+    cout << "\nRegine, my love, do you want to be my valentine? (Y/N): ";
+    cin >> finalQ;
+    cout << "\nKahit ano sabihin mo. It's a YES. Hehe. <3\n";
+}
+
 int main() {
     // Display text first
     displayText();
@@ -72,6 +82,9 @@ int main() {
 
     // Start heart animation
     heartBeatAnimation();
+
+    // Ask the question after animation
+    dQuestion();
 
     return 0;
 }
