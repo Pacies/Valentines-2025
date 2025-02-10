@@ -6,11 +6,32 @@
 using namespace std;
 
 void clearScreen() {
-    system("cls");  // Windows command; use "clear" for Linux/Mac
+    system("cls");  // Windows command; use "clear" for Linux/Mac                                                   // Clr Scrn
     this_thread::sleep_for(chrono::seconds(3));  // Added delay after function call
 }
 
-void decoyMsg() {
+void startCode(){
+    char start;
+
+    cout << "Hello there!, do you want to start the program? (y/n): "; cin >> start;
+    if (start == tolower('n')){
+        system("cls");
+        cout << "Okay po :<, Bye bye!";
+        exit;
+    }
+
+    char letter;
+
+    cout << "I have a letter for you.." << endl;
+    cout << "Open the letter? (y/n): "; cin >> letter;
+    if (letter == tolower('n')){
+        system("cls");
+        cout << "Okay po :<, Bye bye!";
+        exit;
+    }
+}
+
+void decoyMsg() {                                                                                                   //Decoy Msg
     cout << "Hai bebii, ano kamusta ka??" << endl;
     this_thread::sleep_for(chrono::seconds(3));
     cout << "ahhh okay lng.., sigii sigii," << endl;
@@ -23,7 +44,7 @@ void decoyMsg() {
     this_thread::sleep_for(chrono::seconds(3));  // Added delay after function call
 }
 
-void errorMsg() {
+void errorMsg() {                                                                                                   // Error msg
     cout << "\n[ERROR] System Failure: Memory Corruption Detected..." << endl;
     this_thread::sleep_for(chrono::seconds(2));
     cout << "[ERROR] Data Integrity Check Failed... Attempting Recovery..." << endl;
@@ -37,10 +58,10 @@ void errorMsg() {
     cout << "...Decrypting Hidden Message..." << endl;
     this_thread::sleep_for(chrono::seconds(2));
     cout << "SYSTEM ALERT: Message file appears to be corrupted." << endl;
-    this_thread::sleep_for(chrono::seconds(3));  // Added delay after function call
+    this_thread::sleep_for(chrono::seconds(3)); 
 }
 
-void userFix() {
+void userFix() {                                                                                                    //Ask user too fix
     char repair;
 
     cout << "\nWould you like to attempt a repair? (Y/N): ";
@@ -86,33 +107,21 @@ void userFix() {
 
     cout << "[INFO] Resuming Program Execution...\n";
     this_thread::sleep_for(chrono::seconds(3));  // Added delay after function call
+    cout << endl;
 }
 
 
 int main() {
- 
-    char start;
-
-    cout << "Hello there!, do you want to start the program? (y/n): "; cin >> start;
-    if (start == tolower('n')){
-        system("cls");
-        cout << "Okay po :<, Bye bye!";
-        return 0;
-    }
     
-    char letter;
-    cout << "I have a letter for you.." << endl;
-    cout << "Open the letter? (y/n): "; cin >> letter;
-    if (letter == tolower('n')){
-        system("cls");
-        cout << "Okay po :<, Bye bye!";
-        return 0;
-    }
+    startCode();
 
-    //DISPLAY DECOY MESSAGE
-    //DISPLAY ERROR
+    decoyMsg();
 
-    //USER FIXES CODE
+    errorMsg();
+
+    userFix();
+    
+    startCode();
 
     //DISPLAY LSM 
 
