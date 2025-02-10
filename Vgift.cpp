@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
+#include <ctime>
+#include <cctype>
 
 using namespace std;
 
@@ -10,25 +12,27 @@ void clearScreen() {
     this_thread::sleep_for(chrono::seconds(3));  // Added delay after function call
 }
 
-void startCode(){
+bool startCode(){
+    system("cls");
     char start;
 
     cout << "Hello there!, do you want to start the program? (y/n): "; cin >> start;
-    if (start == tolower('n')){
+    if (tolower(start) == 'n'){
         system("cls");
         cout << "Okay po :<, Bye bye!";
-        exit;
+        exit(0);
     }
 
     char letter;
 
     cout << "I have a letter for you.." << endl;
     cout << "Open the letter? (y/n): "; cin >> letter;
-    if (letter == tolower('n')){
+    if (tolower(letter) == 'n'){
         system("cls");
         cout << "Okay po :<, Bye bye!";
-        exit;
+        return false;
     }
+    return true;
 }
 
 void decoyMsg() {                                                                                                   //Decoy Msg
@@ -142,7 +146,7 @@ void heartBeatAnimation() {
             }
         }
         
-        this_thread::sleep_for(chrono::milliseconds(300));  // Adjust speed
+        this_thread::sleep_for(chrono::milliseconds(200));  // Adjust speed
         arrowPos++;
     }
 
@@ -175,24 +179,71 @@ void dQuestion() {
     cout << "\nKahit ano sabihin mo. It's a YES. Hehe. <3\n";
 }
 
+// Function to create a glitch effect before displaying the correct text
+void glitchEffect(string text, int glitchCount = 5, int delay = 100) {
+    for (int i = 0; i < glitchCount; i++) {
+        string scrambled = text;
+        
+        // Randomly replace some characters
+        for (int j = 0; j < scrambled.length(); j++) {
+            if (rand() % 4 == 0) {  // 25% chance to change a character
+                scrambled[j] = char(33 + rand() % 94);  // Replace with a random printable ASCII character
+            }
+        }
+
+        cout << scrambled << "\r" << flush;  // Overwrite text in place
+        this_thread::sleep_for(chrono::milliseconds(delay));  // Short delay for effect
+    }
+}
+
+// Function to simulate slow typing
+void slowPrint(string text, int typingSpeed = 50) {
+    for (char c : text) {
+        cout << c << flush;
+        this_thread::sleep_for(chrono::milliseconds(typingSpeed));  // Delay for typing effect
+    }
+    cout << endl;
+}
+
+// Function to display the glitching dialogue with slow typing
+void displayGlitchingText() {
+    glitchEffect("H@@ Be#iI, An0 kAmsuT@ k4??");
+    slowPrint("H@@ Be#iI, An0 kAmsuT@ k4??");
+
+    glitchEffect("AhHh ok@Y LnG.., s1giI sIgI,");
+    slowPrint("AhHh ok@Y LnG.., s1giI sIgI,");
+
+    glitchEffect("A...nO k@si, M@L@pit na VaL3nTin3s..");
+    slowPrint("A...nO k@si, M@L@pit na VaL3nTin3s..");
+
+    glitchEffect("Gu$to S#n@ m@g T@n0Ng..");
+    slowPrint("Gu$to S#n@ m@g T@n0Ng..");
+
+    glitchEffect("I# yOu wOulD w@nt t0 bE mY V@l3nt1n35*");
+    slowPrint("I# yOu wOulD w@nt t0 bE mY V@l3nt1n35*");
+}
+
 int main() {
     
-    startCode();
+    if(!startCode()){                                                           //Start of the program
+        return 0;       
+    }                                                              
 
-    decoyMsg();
+    decoyMsg();                                                                 //Decoy msg
 
-    errorMsg();
+    errorMsg();                                                                 //Error msg
 
-    userFix();
+    srand(time(0));                                                             //Display Glitch
+    displayGlitchingText();
+
+    userFix();                                                                  //User fixes
     
-    startCode();
+    startCode();                                                                //Restart Code
 
-    displayText();//DISPLAY LSM 
+    displayText();                                                              //DISPLAY LSM 
     this_thread::sleep_for(chrono::seconds(5));
     heartBeatAnimation();
-    dQuestion();
-
-    //ASK THE QUESTION
+    dQuestion();                                                                //Ask THE Question
 
     //DISPLAY ENDING MESSAGE
 
